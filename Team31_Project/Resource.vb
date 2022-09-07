@@ -13,4 +13,7 @@ Option Infer Off
 ' *****************************************************************
 Public MustInherit Class Resource
 
+
+    Public MustOverride Function CalcAll(a As String) As String
+
 End Class
