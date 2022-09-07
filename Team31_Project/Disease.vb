@@ -13,4 +13,5 @@ Option Infer Off
 ' *****************************************************************
 Public MustInherit Class Disease
 
+
 End Class

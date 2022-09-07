@@ -14,4 +14,7 @@ Option Infer Off
 Public Class Medication
     Inherits Resource
 
+    Public Overrides Function CalcAll(a As String) As String
+        Throw New NotImplementedException()
+    End Function
 End Class
