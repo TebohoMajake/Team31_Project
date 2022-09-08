@@ -5,13 +5,14 @@ Option Infer Off
 ' ***************************************************************** 
 ' Team Number: assigned to team 
 ' Team Member 1 Details: Majake, T (222027521) 
-' Team Member 2 Details: Surname, Initials (Student #) 
+' Team Member 2 Details: Makore, LR (222218101) 
 ' Team Member 3 Details: Surname, Initials (Student #) 
 ' Team Member 4 Details: e.g. Smith, J (202000001) 
 ' Practical: Team Project 
 ' Class name: Disease
 ' *****************************************************************
 Public MustInherit Class Disease
+
 
     Protected _TotPop As Integer
     Protected _NumIn As Integer
