@@ -90,14 +90,16 @@ Public Class frmDisease
         Dim name As String
         Dim cityname As String
         Dim totalpop As Integer
-        Dim numinfected As Integer
+        Dim HI, Mal, Ebo As Integer
 
         name = InputBox("What is the name of Country #" + CStr(C))
         cityname = InputBox("What is the name of the specific city we are monitoring in " + name + "?")
         totalpop = CInt(InputBox("What is the total population of " + name + "?"))
-        numinfected = CInt(InputBox("How many people in " + name + " have been infected by at least on of the monitored diseases?"))
+        HI = CInt(InputBox("How many people in " + name + " got diagnosed with HIV?"))
+        Mal = CInt(InputBox("How many people in " + name + "got diagnosed with Malaria?"))
+        Ebo = CInt(InputBox("How many people in " + name + "got diagnosed with Ebola?"))
 
-        Countries(C) = New Country(name, cityname, totalpop, numinfected)
+        Countries(C) = New Country(name, cityname, totalpop, HI, Mal, Ebo)
 
     End Sub
 End Class

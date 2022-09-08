@@ -66,10 +66,15 @@ Public Class Country
     End Property
 
     'Constructor
-    Public Sub New(name As String, cityname As String, totalpop As Integer, numinfected As Integer)
+    Public Sub New(name As String, cityname As String, totalpop As Integer, HI As Integer, Mal As Integer, Ebo As Integer)
         _Name = name
         _CityName = cityname
         _TotalPopulation = totalpop
+
+        _Diseases(1) = New HIV(_TotalPopulation, HI)
+        _Diseases(2) = New Malaria(_TotalPopulation, Mal)
+        _Diseases(3) = New Ebola(_TotalPopulation, Ebo)
+
     End Sub
 
 End Class
