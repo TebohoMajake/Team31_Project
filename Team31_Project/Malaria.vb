@@ -14,4 +14,18 @@ Option Infer Off
 Public Class Malaria
     Inherits Disease
 
+    Public Sub New(TotalPopulation As Integer, NumInfected As Integer)
+
+        _TotPop = TotalPopulation
+        _NumIn = NumInfected
+        _Type = 2
+
+    End Sub
+
+    Public ReadOnly Property NumIn() As Integer
+        Get
+            Return _NumIn
+        End Get
+    End Property
+
 End Class

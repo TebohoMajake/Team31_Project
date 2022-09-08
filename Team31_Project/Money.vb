@@ -14,7 +14,7 @@ Option Infer Off
 Public Class Money
     Inherits Resource
 
-    Public Overrides Function CalcAll(a As String) As String
+    Public Overrides Function CalcAll(r As Double, t As Integer) As String
         Throw New NotImplementedException()
     End Function
 End Class

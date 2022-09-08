@@ -13,5 +13,22 @@ Option Infer Off
 ' *****************************************************************
 Public MustInherit Class Disease
 
+    Protected _TotPop As Integer
+    Protected _NumIn As Integer
+    Protected _Resources(3) As Resource
+    Protected _Type As Integer
 
+    Public Sub New()
+
+        _Resources(1) = New Money
+        _Resources(2) = New Doctor
+        _Resources(3) = New Medication
+
+    End Sub
+
+    Public Function CalcRatio() As Double
+
+        Return _NumIn / _TotPop
+
+    End Function
 End Class
