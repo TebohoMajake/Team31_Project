@@ -15,6 +15,27 @@ Public Class Money
     Inherits Resource
 
     Public Overrides Function CalcAll(r As Double, t As Integer) As String
-        Throw New NotImplementedException()
+
+        Dim Num1 As Double
+
+        If t = 1 Then
+            'If the desease calling this function is HIV the calculations below will be run
+            Num1 = r * 100000
+            Return "R" + CStr(Num1)
+
+        ElseIf t = 2 Then
+            'If the desease calling this function is Malaria the calculations below will be run
+            Num1 = r * 150000
+            Return "R" + CStr(Num1)
+
+        ElseIf t = 3 Then
+            'If the desease calling this function is Ebola the calculations below will be run
+            Num1 = r * 200000
+            Return "R" + CStr(Num1)
+
+        Else
+            Return "Error"
+        End If
+
     End Function
 End Class

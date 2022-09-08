@@ -15,6 +15,27 @@ Public Class Medication
     Inherits Resource
 
     Public Overrides Function CalcAll(r As Double, t As Integer) As String
-        Throw New NotImplementedException()
+        Dim Num1 As Double
+
+
+        If t = 1 Then
+            'If the desease calling this function is HIV the calculations below will be run
+            Num1 = r * 10
+            Return CStr(Num1) + "kg"
+
+        ElseIf t = 2 Then
+            'If the desease calling this function is Malaria the calculations below will be run
+            Num1 = r * 30
+            Return CStr(Num1) + "kg"
+
+        ElseIf t = 3 Then
+            'If the desease calling this function is Ebola the calculations below will be run
+            Num1 = r * 50
+            Return CStr(Num1) + "Kg"
+
+        Else
+            Return "Error"
+        End If
+
     End Function
 End Class
