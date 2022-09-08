@@ -70,7 +70,6 @@ Public Class Country
         _Name = name
         _CityName = cityname
         _TotalPopulation = totalpop
-        _NumInfected = numinfected
     End Sub
 
 End Class
