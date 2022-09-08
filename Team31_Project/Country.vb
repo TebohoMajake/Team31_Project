@@ -17,7 +17,7 @@ Public Class Country
     Private _CityName As String
     Private _TotalPopulation As Integer
     Private _NumInfected As Integer
-    Private _Diseases() As Disease
+    Private _Diseases(3) As Disease
 
     'Property Methods
     Public Property Name() As String
@@ -66,13 +66,11 @@ Public Class Country
     End Property
 
     'Constructor
-    Public Sub New(name As String, cityname As String, totalpop As Integer, numinfected As Integer, numDiseases As Integer)
+    Public Sub New(name As String, cityname As String, totalpop As Integer, numinfected As Integer)
         _Name = name
         _CityName = cityname
         _TotalPopulation = totalpop
         _NumInfected = numinfected
-
-        ReDim _Diseases(numDiseases)
     End Sub
 
 End Class
