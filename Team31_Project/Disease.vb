@@ -19,6 +19,16 @@ Public MustInherit Class Disease
     Protected _Resources(3) As Resource
     Protected _Type As Integer
 
+    Public Property NumIn() As Integer
+        Get
+            Return _NumIn
+        End Get
+        Set(value As Integer)
+            _NumIn = value
+        End Set
+    End Property
+
+
     Public Sub New()
 
         _Resources(1) = New Money

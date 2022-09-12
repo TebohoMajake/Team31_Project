@@ -16,7 +16,6 @@ Public Class Country
     Private _Name As String
     Private _CityName As String
     Private _TotalPopulation As Integer
-    Private _NumInfected As Integer
     Private _Diseases(3) As Disease
 
     'Property Methods
@@ -47,13 +46,10 @@ Public Class Country
         End Set
     End Property
 
-    Public Property Numinfected() As Integer
+    Public ReadOnly Property Numinfected() As Integer
         Get
-            Return _NumInfected
+            Return CalcInf()
         End Get
-        Set(value As Integer)
-            _NumInfected = value
-        End Set
     End Property
 
     Public Property Diseases(index As Integer) As Disease
@@ -77,4 +73,17 @@ Public Class Country
 
     End Sub
 
+    Private Function CalcInf() As Integer
+
+        Dim Answer As Integer
+
+        For d As Integer = 1 To 3
+
+            Answer += Diseases(d).NumIn
+
+        Next
+
+        Return Answer
+
+    End Function
 End Class

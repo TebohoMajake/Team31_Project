@@ -22,13 +22,4 @@ Public Class Ebola
 
     End Sub
 
-    Public Property NumIn() As Integer
-        Get
-            Return _NumIn
-        End Get
-        Set(value As Integer)
-            _NumIn = value
-        End Set
-    End Property
-
 End Class
