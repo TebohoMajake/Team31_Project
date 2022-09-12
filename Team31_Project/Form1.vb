@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
+Imports System.Globalization
 
 ' ***************************************************************** 
 ' Team Number: assigned to team 
@@ -15,6 +16,8 @@ Public Class frmDisease
 
     Private Countries() As Country
     Private NumC As Integer = 0
+    Private Grid As Integer
+    Private SelectedC As Integer
 
     Private Sub PT(r As Integer, c As Integer, t As String)
 
@@ -27,24 +30,28 @@ Public Class frmDisease
     Private Sub Grid1()
 
         grdDisplay.Rows = NumC + 1
-        grdDisplay.Cols = 3
+        grdDisplay.Cols = 4
 
-        PT(0, 0, "Country:")
-        PT(0, 1, "Population:")
-        PT(0, 2, "Infected:")
+
+        PT(0, 0, "Number")
+        PT(0, 1, "Country:")
+        PT(0, 2, "Population:")
+        PT(0, 3, "Infected:")
         If NumC = 0 Then
 
         Else
             For i As Integer = 1 To NumC
 
-                PT(i, 0, Countries(i).Cityname)
-                PT(i, 1, CStr(Countries(i).Totalpopulation))
-                PT(i, 2, CStr(Countries(i).Numinfected))
+                PT(i, 0, CStr(i))
+                PT(i, 1, Countries(i).Cityname)
+                PT(i, 2, CStr(Countries(i).Totalpopulation))
+                PT(i, 3, CStr(Countries(i).Numinfected))
 
             Next
         End If
 
         txtExplorer.Text = "Main page"
+        Grid = 1
 
         btnBack.Enabled = False
         btnSelectC.Enabled = True
@@ -69,6 +76,13 @@ Public Class frmDisease
         PT(7, 0, "Amount of Money:")
 
         PT(6, 1, "Quantity:")
+
+
+        txtExplorer.Text = "Main page >> " + Countries(c).Name
+        Grid = 2
+
+        btnBack.Enabled = True
+        btnSelectC.Enabled = False
 
     End Sub
 
@@ -126,6 +140,34 @@ Public Class frmDisease
         Ebo = CInt(InputBox("How many people in " + name + "got diagnosed with Ebola?"))
 
         Countries(C) = New Country(name, cityname, totalpop, HI, Mal, Ebo)
+
+    End Sub
+
+    Private Sub btnSelectC_Click(sender As Object, e As EventArgs) Handles btnSelectC.Click
+
+        Dim Chosen As Integer
+
+        Chosen = CInt(InputBox("Which country do you wish to view? Please Enter the Country Number."))
+        While Chosen > NumC Or 0 > Chosen
+            MsgBox("Sorry, but Country number " + CStr(Chosen) + " does not exist.")
+            Chosen = CInt(InputBox("Which country do you wish to view? Please Enter the Country Number."))
+        End While
+
+        SelectedC = Chosen
+        Grid2(Chosen)
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+
+        If Grid = 2 Then
+
+            Grid1()
+
+        ElseIf Grid = 3 Then
+
+            Grid2(SelectedC)
+
+        End If
 
     End Sub
 End Class
