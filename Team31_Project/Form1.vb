@@ -1,7 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
-Imports System.Globalization
 
 ' ***************************************************************** 
 ' Team Number: assigned to team 
@@ -43,7 +42,7 @@ Public Class frmDisease
             For i As Integer = 1 To NumC
 
                 PT(i, 0, CStr(i))
-                PT(i, 1, Countries(i).Cityname)
+                PT(i, 1, Countries(i).Name)
                 PT(i, 2, CStr(Countries(i).Totalpopulation))
                 PT(i, 3, CStr(Countries(i).Numinfected))
 
@@ -54,6 +53,7 @@ Public Class frmDisease
         Grid = 1
 
         btnBack.Enabled = False
+        btnDI.Enabled = False
         btnSelectC.Enabled = True
     End Sub
 
@@ -61,6 +61,16 @@ Public Class frmDisease
 
         grdDisplay.Rows = 10
         grdDisplay.Cols = 2
+
+        For col As Integer = 0 To 1
+
+            For row As Integer = 0 To 9
+
+                PT(row, col, "")
+
+            Next row
+
+        Next col
 
         PT(0, 0, Countries(c).Name)
 
@@ -72,8 +82,9 @@ Public Class frmDisease
 
         PT(6, 0, "Resource:")
         PT(7, 0, "Number of Doctors:")
-        PT(7, 0, "Amount of Medication:")
-        PT(7, 0, "Amount of Money:")
+
+        PT(8, 0, "Amount of Medication:")
+        PT(9, 0, "Amount of Money:")
 
         PT(6, 1, "Quantity:")
 
@@ -82,6 +93,39 @@ Public Class frmDisease
         Grid = 2
 
         btnBack.Enabled = True
+        btnDI.Enabled = True
+        btnSelectC.Enabled = False
+
+    End Sub
+
+    Private Sub Grid3(c As Integer)
+
+        grdDisplay.Rows = 6
+        grdDisplay.Cols = 3
+
+        PT(0, 0, Countries(c).Name)
+
+        PT(2, 0, "Disease:")
+        PT(2, 1, "Number infected:")
+        PT(2, 2, "Percetage of whole population:")
+
+        PT(3, 0, "HIV")
+        PT(3, 1, CStr(Countries(c).Diseases(1).NumIn))
+        PT(3, 2, Format(Countries(c).Diseases(1).CalcRatio * 100, "##") + "%")
+
+        PT(4, 0, "Malaria")
+        PT(4, 1, CStr(Countries(c).Diseases(2).NumIn))
+        PT(4, 2, Format(Countries(c).Diseases(2).CalcRatio * 100, "##") + "%")
+
+        PT(5, 0, "Ebola")
+        PT(5, 1, CStr(Countries(c).Diseases(3).NumIn))
+        PT(5, 2, Format(Countries(c).Diseases(3).CalcRatio * 100, "##") + "%")
+
+        txtExplorer.Text = "Main page >> " + Countries(c).Name + " >> Disease Infomation"
+        Grid = 3
+
+        btnBack.Enabled = True
+        btnDI.Enabled = False
         btnSelectC.Enabled = False
 
     End Sub
@@ -89,6 +133,7 @@ Public Class frmDisease
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         btnSelectC.Enabled = False
+        btnDI.Enabled = False
         btnBack.Enabled = False
 
     End Sub
@@ -105,7 +150,7 @@ Public Class frmDisease
 
             NumC += 1
             Dim TempArray(Countries.Length) As Country
-            For c As Integer = 1 To Countries.Length
+            For c As Integer = 1 To Countries.Length - 1
 
                 TempArray(c) = Countries(c)
 
@@ -113,7 +158,7 @@ Public Class frmDisease
 
             ReDim Countries(NumC)
 
-            For c As Integer = 1 To TempArray.Length
+            For c As Integer = 1 To TempArray.Length - 1
 
                 Countries(c) = TempArray(c)
 
@@ -168,6 +213,12 @@ Public Class frmDisease
             Grid2(SelectedC)
 
         End If
+
+    End Sub
+
+    Private Sub btnDI_Click(sender As Object, e As EventArgs) Handles btnDI.Click
+
+        Grid3(SelectedC)
 
     End Sub
 End Class

@@ -28,6 +28,12 @@ Public MustInherit Class Disease
         End Set
     End Property
 
+    Public ReadOnly Property Resources(index As Integer) As Resource
+        Get
+            Return _Resources(index)
+        End Get
+    End Property
+
 
     Public Sub New()
 

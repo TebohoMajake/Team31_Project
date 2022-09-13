@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
+Imports System.Text.RegularExpressions
 
 ' ***************************************************************** 
 ' Team Number: assigned to team 
@@ -16,6 +17,7 @@ Public Class Country
     Private _Name As String
     Private _CityName As String
     Private _TotalPopulation As Integer
+    Private _Resources(3) As Integer
     Private _Diseases(3) As Disease
 
     'Property Methods
@@ -86,4 +88,37 @@ Public Class Country
         Return Answer
 
     End Function
+
+    Private Sub CalcResources()
+
+
+
+        For t As Integer = 1 To 3
+
+            For r As Integer = 1 To 3
+                For d As Integer = 1 To 3
+                    Dim ratio As Double
+                    Dim value As String
+                    ratio = Diseases(d).CalcRatio
+                    If t = 1 Then
+
+                        value = Regex.Replace(Diseases(d).Resources(r).CalcAll(ratio, t), "\$", "")
+
+                    ElseIf t = 2 Then
+
+                        value = Diseases(d).Resources(r).CalcAll(ratio, t)
+
+                    Else
+
+                        value = Regex.Replace(Diseases(d).Resources(r).CalcAll(ratio, t), "kg", "")
+
+                    End If
+
+                    _Resources(t) += CInt(value)
+
+                Next d
+            Next r
+        Next t
+
+    End Sub
 End Class
