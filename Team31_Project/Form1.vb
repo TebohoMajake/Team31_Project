@@ -82,9 +82,13 @@ Public Class frmDisease
 
         PT(6, 0, "Resource:")
         PT(7, 0, "Number of Doctors:")
+        PT(7, 1, CStr(Countries(c).Resources(2)))
 
         PT(8, 0, "Amount of Medication:")
+        PT(8, 1, CStr(Countries(c).Resources(3)) + "kg")
+
         PT(9, 0, "Amount of Money:")
+        PT(9, 1, "$" + CStr(Countries(c).Resources(1)))
 
         PT(6, 1, "Quantity:")
 
@@ -173,18 +177,16 @@ Public Class frmDisease
     Private Sub AskCInfo(C As Integer)
 
         Dim name As String
-        Dim cityname As String
         Dim totalpop As Integer
         Dim HI, Mal, Ebo As Integer
 
         name = InputBox("What is the name of Country #" + CStr(C))
-        cityname = InputBox("What is the name of the specific city we are monitoring in " + name + "?")
         totalpop = CInt(InputBox("What is the total population of " + name + "?"))
         HI = CInt(InputBox("How many people in " + name + " got diagnosed with HIV?"))
         Mal = CInt(InputBox("How many people in " + name + "got diagnosed with Malaria?"))
         Ebo = CInt(InputBox("How many people in " + name + "got diagnosed with Ebola?"))
 
-        Countries(C) = New Country(name, cityname, totalpop, HI, Mal, Ebo)
+        Countries(C) = New Country(name, totalpop, HI, Mal, Ebo)
 
     End Sub
 

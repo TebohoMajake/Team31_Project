@@ -15,7 +15,6 @@ Imports System.Text.RegularExpressions
 Public Class Country
     'Attributes
     Private _Name As String
-    Private _CityName As String
     Private _TotalPopulation As Integer
     Private _Resources(3) As Integer
     Private _Diseases(3) As Disease
@@ -27,15 +26,6 @@ Public Class Country
         End Get
         Set(value As String)
             _Name = value
-        End Set
-    End Property
-
-    Public Property Cityname() As String
-        Get
-            Return _CityName
-        End Get
-        Set(value As String)
-            _CityName = value
         End Set
     End Property
 
@@ -63,10 +53,16 @@ Public Class Country
         End Set
     End Property
 
+    Public ReadOnly Property Resources(index As Integer) As Integer
+        Get
+            CalcResources()
+            Return _Resources(index)
+        End Get
+    End Property
+
     'Constructor
-    Public Sub New(name As String, cityname As String, totalpop As Integer, HI As Integer, Mal As Integer, Ebo As Integer)
+    Public Sub New(name As String, totalpop As Integer, HI As Integer, Mal As Integer, Ebo As Integer)
         _Name = name
-        _CityName = cityname
         _TotalPopulation = totalpop
 
         _Diseases(1) = New HIV(_TotalPopulation, HI)
@@ -94,27 +90,13 @@ Public Class Country
 
 
         For t As Integer = 1 To 3
-
             For r As Integer = 1 To 3
                 For d As Integer = 1 To 3
                     Dim ratio As Double
-                    Dim value As String
+
                     ratio = Diseases(d).CalcRatio
-                    If t = 1 Then
 
-                        value = Regex.Replace(Diseases(d).Resources(r).CalcAll(ratio, t), "\$", "")
-
-                    ElseIf t = 2 Then
-
-                        value = Diseases(d).Resources(r).CalcAll(ratio, t)
-
-                    Else
-
-                        value = Regex.Replace(Diseases(d).Resources(r).CalcAll(ratio, t), "kg", "")
-
-                    End If
-
-                    _Resources(t) += CInt(value)
+                    _Resources(t) += CInt(Diseases(d).Resources(r).CalcAll(ratio, t))
 
                 Next d
             Next r
