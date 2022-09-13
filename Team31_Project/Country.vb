@@ -90,6 +90,7 @@ Public Class Country
 
 
         For t As Integer = 1 To 3
+            _Resources(t) = 0
             For r As Integer = 1 To 3
                 For d As Integer = 1 To 3
                     Dim ratio As Double
