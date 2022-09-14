@@ -32,13 +32,15 @@ Public Class frmDisease
     Private Sub Grid1()
 
         grdDisplay.Rows = NumC + 1
-        grdDisplay.Cols = 4
+        grdDisplay.Cols = 5
 
 
         PT(0, 0, "Number")
         PT(0, 1, "Country:")
         PT(0, 2, "Population:")
         PT(0, 3, "Infected:")
+        PT(0, 4, "Ratio infected:")
+
         If NumC = 0 Then
 
         Else
@@ -48,6 +50,7 @@ Public Class frmDisease
                 PT(i, 1, Countries(i).Name)
                 PT(i, 2, CStr(Countries(i).Totalpopulation))
                 PT(i, 3, CStr(Countries(i).Numinfected))
+                PT(i, 4, CStr(Countries(i).CalcRatio) + "%")
 
             Next
         End If
@@ -88,7 +91,7 @@ Public Class frmDisease
         PT(7, 0, "Number of Doctors:")
         PT(7, 1, CStr(Countries(c).Resources(2)))
 
-        PT(8, 0, "Amount of Medication:")
+        PT(8, 0, "Amount of Medicine:")
         PT(8, 1, CStr(Countries(c).Resources(3)) + "kg")
 
         PT(9, 0, "Amount of Money:")

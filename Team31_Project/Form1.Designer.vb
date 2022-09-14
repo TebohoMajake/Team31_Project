@@ -38,7 +38,7 @@ Partial Class frmDisease
         Me.grdDisplay.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDisplay.Name = "grdDisplay"
         Me.grdDisplay.Scrollbars = System.Windows.Forms.ScrollBars.Both
-        Me.grdDisplay.Size = New System.Drawing.Size(526, 344)
+        Me.grdDisplay.Size = New System.Drawing.Size(664, 344)
         Me.grdDisplay.TabIndex = 0
         '
         'btnAddC
@@ -89,7 +89,7 @@ Partial Class frmDisease
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(947, 450)
         Me.Controls.Add(Me.btnDI)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.txtExplorer)
