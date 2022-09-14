@@ -64,7 +64,7 @@ Partial Class frmDisease
         Me.txtExplorer.Enabled = False
         Me.txtExplorer.Location = New System.Drawing.Point(251, 39)
         Me.txtExplorer.Name = "txtExplorer"
-        Me.txtExplorer.Size = New System.Drawing.Size(505, 22)
+        Me.txtExplorer.Size = New System.Drawing.Size(638, 22)
         Me.txtExplorer.TabIndex = 3
         '
         'btnBack
