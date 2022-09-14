@@ -123,15 +123,15 @@ Public Class frmDisease
 
         PT(3, 0, "HIV")
         PT(3, 1, CStr(Countries(c).Diseases(1).NumIn))
-        PT(3, 2, Format(Countries(c).Diseases(1).CalcRatio * 100, "##") + "%")
+        PT(3, 2, Format(Countries(c).Diseases(1).CalcRatio * 100, "0") + "%")
 
         PT(4, 0, "Malaria")
         PT(4, 1, CStr(Countries(c).Diseases(2).NumIn))
-        PT(4, 2, Format(Countries(c).Diseases(2).CalcRatio * 100, "##") + "%")
+        PT(4, 2, Format(Countries(c).Diseases(2).CalcRatio * 100, "0") + "%")
 
         PT(5, 0, "Ebola")
         PT(5, 1, CStr(Countries(c).Diseases(3).NumIn))
-        PT(5, 2, Format(Countries(c).Diseases(3).CalcRatio * 100, "##") + "%")
+        PT(5, 2, Format(Countries(c).Diseases(3).CalcRatio * 100, "0") + "%")
 
         txtExplorer.Text = "Main page >> " + Countries(c).Name + " >> Disease Infomation"
         Grid = 3
