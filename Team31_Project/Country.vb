@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
+Imports System.Text.RegularExpressions
 
 ' ***************************************************************** 
 ' Team Number: assigned to team 
@@ -14,8 +15,8 @@ Option Infer Off
 Public Class Country
     'Attributes
     Private _Name As String
-    Private _CityName As String
     Private _TotalPopulation As Integer
+    Private _Resources(3) As Integer
     Private _Diseases(3) As Disease
 
     'Property Methods
@@ -25,15 +26,6 @@ Public Class Country
         End Get
         Set(value As String)
             _Name = value
-        End Set
-    End Property
-
-    Public Property Cityname() As String
-        Get
-            Return _CityName
-        End Get
-        Set(value As String)
-            _CityName = value
         End Set
     End Property
 
@@ -61,10 +53,16 @@ Public Class Country
         End Set
     End Property
 
+    Public ReadOnly Property Resources(index As Integer) As Integer
+        Get
+            CalcResources()
+            Return _Resources(index)
+        End Get
+    End Property
+
     'Constructor
-    Public Sub New(name As String, cityname As String, totalpop As Integer, HI As Integer, Mal As Integer, Ebo As Integer)
+    Public Sub New(name As String, totalpop As Integer, HI As Integer, Mal As Integer, Ebo As Integer)
         _Name = name
-        _CityName = cityname
         _TotalPopulation = totalpop
 
         _Diseases(1) = New HIV(_TotalPopulation, HI)
@@ -86,7 +84,7 @@ Public Class Country
         Return Answer
 
     End Function
-    
+
     'Calculate Ratio of Infected Function
     Public  Function CalcRatio() As Double
         Dim TotalInfected As Integer
@@ -100,5 +98,25 @@ Public Class Country
 
         Return Ratio
     End Function
+
+    Private Sub CalcResources()
+
+
+
+        For t As Integer = 1 To 3
+            _Resources(t) = 0
+            For r As Integer = 1 To 3
+                For d As Integer = 1 To 3
+                    Dim ratio As Double
+
+                    ratio = Diseases(d).CalcRatio
+
+                    _Resources(t) += CInt(Diseases(d).Resources(r).CalcAll(ratio, t))
+
+                Next d
+            Next r
+        Next t
+
+    End Sub
 
 End Class

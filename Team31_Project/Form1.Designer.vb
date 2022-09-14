@@ -27,6 +27,7 @@ Partial Class frmDisease
         Me.btnSelectC = New System.Windows.Forms.Button()
         Me.txtExplorer = New System.Windows.Forms.TextBox()
         Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnDI = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'grdDisplay
@@ -51,7 +52,7 @@ Partial Class frmDisease
         '
         'btnSelectC
         '
-        Me.btnSelectC.Location = New System.Drawing.Point(22, 149)
+        Me.btnSelectC.Location = New System.Drawing.Point(22, 113)
         Me.btnSelectC.Name = "btnSelectC"
         Me.btnSelectC.Size = New System.Drawing.Size(161, 56)
         Me.btnSelectC.TabIndex = 2
@@ -75,11 +76,21 @@ Partial Class frmDisease
         Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = True
         '
+        'btnDI
+        '
+        Me.btnDI.Location = New System.Drawing.Point(22, 194)
+        Me.btnDI.Name = "btnDI"
+        Me.btnDI.Size = New System.Drawing.Size(161, 55)
+        Me.btnDI.TabIndex = 5
+        Me.btnDI.Text = "View Disease Info"
+        Me.btnDI.UseVisualStyleBackColor = True
+        '
         'frmDisease
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnDI)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.txtExplorer)
         Me.Controls.Add(Me.btnSelectC)
@@ -97,4 +108,5 @@ Partial Class frmDisease
     Friend WithEvents btnSelectC As Button
     Friend WithEvents txtExplorer As TextBox
     Friend WithEvents btnBack As Button
+    Friend WithEvents btnDI As Button
 End Class
