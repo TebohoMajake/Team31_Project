@@ -6,7 +6,7 @@ Option Infer Off
 ' Team Number: assigned to team 
 ' Team Member 1 Details: Majake, T (222027521) 
 ' Team Member 2 Details: Makore, LR (222218101) 
-' Team Member 3 Details: Surname, Initials (Student #) 
+' Team Member 3 Details: Khumalo , G (222082358)
 ' Team Member 4 Details: e.g. Smith, J (202000001) 
 ' Practical: Team Project 
 ' Class name: Medication 
@@ -20,12 +20,12 @@ Public Class Medication
 
         If t = 1 Then
             'If the desease calling this function is HIV the calculations below will be run
-            Num1 = r * 10
+            Num1 = r * 75
             Return CStr(Num1)
 
         ElseIf t = 2 Then
             'If the desease calling this function is Malaria the calculations below will be run
-            Num1 = r * 30
+            Num1 = r * 25
             Return CStr(Num1)
 
         ElseIf t = 3 Then
