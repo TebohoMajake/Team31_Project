@@ -13,11 +13,13 @@ Option Infer Off
 ' *****************************************************************
 Public Class frmDisease
 
+    'Variables
     Private Countries() As Country
     Private NumC As Integer = 0
     Private Grid As Integer
     Private SelectedC As Integer
 
+    'Place Text on the Grid
     Private Sub PT(r As Integer, c As Integer, t As String)
 
         grdDisplay.Row = r
@@ -26,6 +28,7 @@ Public Class frmDisease
 
     End Sub
 
+    'The main grid displaying all the countries and general data
     Private Sub Grid1()
 
         grdDisplay.Rows = NumC + 1
@@ -57,6 +60,7 @@ Public Class frmDisease
         btnSelectC.Enabled = True
     End Sub
 
+    'The second grid which displays a specific country's data
     Private Sub Grid2(c As Integer)
 
         grdDisplay.Rows = 10
@@ -102,6 +106,7 @@ Public Class frmDisease
 
     End Sub
 
+    'Displays the stats specific to the diseases from one country
     Private Sub Grid3(c As Integer)
 
         grdDisplay.Rows = 6
@@ -134,6 +139,7 @@ Public Class frmDisease
 
     End Sub
 
+    'Form Load
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         btnSelectC.Enabled = False
@@ -142,16 +148,20 @@ Public Class frmDisease
 
     End Sub
 
+    'Add Country button
     Private Sub btnAddC_Click(sender As Object, e As EventArgs) Handles btnAddC.Click
 
+        'Checks if the there was one Country entered in the program
         If NumC = 0 Then
 
+            'Resizes the Countries Array to accomodate for the new country
             ReDim Countries(1)
             NumC += 1
             AskCInfo(NumC)
-            Grid1()
+            Grid1()                 'Then it displays the new Country on the Grid
         Else
 
+            'If there was alread one or more Country entered then it will do the following
             NumC += 1
             Dim TempArray(Countries.Length) As Country
             For c As Integer = 1 To Countries.Length - 1
@@ -174,6 +184,7 @@ Public Class frmDisease
 
     End Sub
 
+    'Subroutine to ask for countries information and store it
     Private Sub AskCInfo(C As Integer)
 
         Dim name As String
@@ -190,6 +201,7 @@ Public Class frmDisease
 
     End Sub
 
+    'Select Country button
     Private Sub btnSelectC_Click(sender As Object, e As EventArgs) Handles btnSelectC.Click
 
         Dim Chosen As Integer
@@ -204,6 +216,7 @@ Public Class frmDisease
         Grid2(Chosen)
     End Sub
 
+    'Back Button
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
 
         If Grid = 2 Then
@@ -218,6 +231,7 @@ Public Class frmDisease
 
     End Sub
 
+    'View Disease Info button
     Private Sub btnDI_Click(sender As Object, e As EventArgs) Handles btnDI.Click
 
         Grid3(SelectedC)
