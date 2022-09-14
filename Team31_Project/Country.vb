@@ -88,14 +88,12 @@ Public Class Country
 
     'Calculate Ratio of Infected Function
     Public Function CalcRatio() As Double
-        Dim TotalInfected As Integer
+
         Dim Ratio As Double
 
         For d As Integer = 1 To 3
-            TotalInfected += CalcInf()
+            Ratio += Diseases(d).CalcRatio
         Next d
-
-        Ratio = TotalInfected / _TotalPopulation
 
         Return Ratio
     End Function
