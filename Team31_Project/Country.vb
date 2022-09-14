@@ -85,6 +85,7 @@ Public Class Country
 
     End Function
 
+
     'Calculate Ratio of Infected Function
     Public Function CalcRatio() As Double
         Dim TotalInfected As Integer
@@ -98,7 +99,6 @@ Public Class Country
 
         Return Ratio
     End Function
-
     Private Sub CalcResources()
 
 
